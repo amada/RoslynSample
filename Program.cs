@@ -10,7 +10,6 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace RoslynSample
 {
@@ -42,8 +41,6 @@ namespace RoslynSample
             System.Console.WriteLine(addFunc(120, 80));
         }
 
-
-
         static void TestVectorGenerator()
         {
             var syntaxTree = SyntaxTree.ParseFile("../../vector_test.cs");
@@ -55,15 +52,9 @@ namespace RoslynSample
 
         static void TestCallAnalysis()
         {
-#if true 
             var tree = SyntaxTree.ParseFile("../../semantics_test.cs");
             var analyzer = new CallAnalyzer(tree);
             analyzer.Analyze("FakeMain");
-#else
-            var tree = SyntaxTree.ParseFile("../../CallAnalyzer.cs");
-            var analyzer = new CallAnalyzer(tree);
-            analyzer.Analyze("Analyze");
-#endif
         }
 
         static void Main(string[] args)
@@ -73,7 +64,6 @@ namespace RoslynSample
             //TestVectorGenerator();
 
 //            new Walker().Visit(rootNode);
-
         }
     }
 }
